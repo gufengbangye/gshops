@@ -124,7 +124,7 @@ export default {
                         margin-bottom 8px
                         .shop_rating_order_left
                           float left
-                          color #ff9a0d                        
+                          color #ff9a0d                 
                           .rating_section
                             float left
                             font-size 10px
