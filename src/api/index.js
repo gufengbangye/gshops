@@ -19,7 +19,7 @@ export const reqCaptcha = () => ajax(BASE_URL + '/captcha')
 export const reqPwd = ({name, pwd, captcha}) => ajax(BASE_URL + '/login_pwd', {name, pwd, captcha}, 'post')
 // 用户名密码登陆
 
-export const reqSendCode = (phone) => ajax(BASE_URL + '/sendcode', phone)
+export const reqSendCode = (phone) => ajax(BASE_URL + '/sendcode', {phone})
 // 发送短信验证码
 
 export const reqloginSms = ({phone, code}) => ajax(BASE_URL + '/login_sms', {phone, code}, 'post')
@@ -30,3 +30,12 @@ export const reqUserinfo = () => ajax(BASE_URL + '/userinfo')
 
 export const reqLogout = () => ajax(BASE_URL + '/logout')
 // 用户登出
+
+export const reqFoods = () => ajax('/foods')
+// 商店食物列表
+
+export const reqRating = () => ajax('/rating')
+// 商店评价
+
+export const reqInfo = () => ajax('/info')
+// 商店信息

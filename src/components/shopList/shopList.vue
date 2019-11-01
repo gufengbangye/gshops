@@ -2,7 +2,7 @@
  <div class="shop_container">
             <ul class="shop_list" v-if="shops.length">
               <li class="shop_li border-1px"  v-for="(shop,index) in shops" :key="index">
-                <a>
+                <router-link :to="`/shop${shop.id}`">
                   <div class="shop_left">
                     <img class="shop_img" :src="baseImgUrl+shop.image_path">
                   </div>
@@ -35,7 +35,7 @@
                       </p>
                     </section>
                   </div>
-                </a>
+                </router-link>
               </li>
             </ul>
             <img src="../../common/images/shop_back.svg" alt="shop_back" v-else v-for="item in 6" :key="item">
@@ -124,7 +124,7 @@ export default {
                         margin-bottom 8px
                         .shop_rating_order_left
                           float left
-                          color #ff9a0d                 
+                          color #ff9a0d
                           .rating_section
                             float left
                             font-size 10px

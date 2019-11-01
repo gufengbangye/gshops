@@ -2,12 +2,15 @@
   <section class="msite">
         <!--首页头部-->
         <HeaderTop :title='address.name' class="msite_header">
-         <span class="header_search" slot='left'>
+         <router-link class="header_search" slot='left'  to='/Search'>
             <i class="iconfont icon-sousuo"></i>
-          </span>
-          <span class="header_login" slot="right">
-            <span class="header_login_text" @click="$router.replace('/login')">登录|注册</span>
-          </span>
+          </router-link>
+          <router-link class="header_login" slot="right" :to="userInfo._id?'/useinfo':'/login'">
+            <span class="header_login_text" v-if="!userInfo._id">登录|注册</span>
+             <span class="header_login_text" v-else>
+             <i class="iconfont icon-xuanxiang"></i>
+             </span>
+          </router-link>
         </HeaderTop>
         <!--首页导航-->
         <nav class="msite_nav">
@@ -53,9 +56,10 @@ export default {
   mounted () {
     this.$store.dispatch('getCategorys')
     this.$store.dispatch('getShops')
+    this.$store.dispatch('reqUserinfo')
   },
   computed: {
-    ...mapState(['address', 'categorys']),
+    ...mapState(['address', 'categorys', 'userInfo']),
     categorysArr () {
       const {categorys} = this
       let arr = []
@@ -146,6 +150,8 @@ export default {
               transform translateY(-50%)
               .header_login_text
                 color #fff
+                i
+                 font-size 25px
           .msite_nav
             bottom-border-1px(#e4e4e4)
             margin-top 45px

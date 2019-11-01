@@ -5,8 +5,10 @@ import Order from '../pages/Order/Order'
 import Search from '../pages/Search/Search'
 import profile from '../pages/profile/profile'
 import Login from '../pages/Login/login'
-import mima from '../pages/Login/mima'
-import duanxin from '../pages/Login/duanxin'
+import info from '../pages/Shops/info'
+import shop from '../pages/Shops/shop'
+import rating from '../pages/Shops/rating'
+import foods from '../pages/Shops/foods'
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -46,20 +48,27 @@ export default new VueRouter({
     meta: {
       showFtooer: false
     },
-    component: Login,
+    component: Login
+  },
+  {
+    path: '/shop:id',
+    component: shop,
     children: [{
-      path: '/login/mima',
-      component: mima
+      path: '/shop:id/info',
+      component: info
     },
     {
-      path: '/login/duanxin',
-      component: duanxin
+      path: '/shop:id/rating',
+      component: rating
+    },
+    {
+      path: '/shop:id/foods',
+      component: foods
     },
     {
       path: '',
-      redirect: '/login/duanxin'
-    }
-    ]
+      redirect: '/shop:id/foods'
+    }]
   },
   {
     path: '/',

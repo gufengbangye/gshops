@@ -2,17 +2,17 @@
  <section class="profile">
         <HeaderTop title="我的"></HeaderTop>
         <section class="profile-number">
-          <router-link class="profile-link" to="/Login">
+          <router-link class="profile-link" :to='userInfo._id?"/profile/userinfo":"/Login"'>
             <div class="profile_image">
               <i class="iconfont icon-person"></i>
             </div>
             <div class="user-info">
-              <p class="user-info-top">登录/注册</p>
+              <p class="user-info-top" v-show="!userInfo.phone">{{userInfo._id?userInfo._id:"登录/注册"}}</p>
               <p>
                 <span class="user-icon">
                   <i class="iconfont icon-shouji icon-mobile"></i>
                 </span>
-                <span class="icon-mobile-number">暂无绑定手机号</span>
+                <span class="icon-mobile-number">{{userInfo.phone?userInfo.phone:"暂无绑定手机号"}}</span>
               </p>
             </div>
             <span class="arrow">
@@ -88,14 +88,29 @@
             </div>
           </a>
         </section>
+        <mt-button type="danger" :style="{'width':'100%'}" @click="alertMb" v-show="userInfo._id">退出登录</mt-button>
       </section>
 </template>
 
 <script>
 import HeaderTop from '../../components/HeaderTop/HeaderTop'
+import {mapActions, mapState} from 'vuex'
+import { MessageBox } from 'mint-ui'
 export default {
   components: {
     HeaderTop
+  },
+  computed: {
+    ...mapState(['userInfo'])
+  },
+  methods: {
+    alertMb () {
+      MessageBox.confirm('确定执行此操作?').then(action => {
+        this.$store.dispatch('reqLogout')
+      }, action => {
+        alert('失败')
+      })
+    }
   }
 }
 </script>

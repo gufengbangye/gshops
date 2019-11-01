@@ -4,6 +4,10 @@ import Vue from 'Vue'
 import App from './App'
 import router from './router/index'
 import store from './store'
+import { Button, Cell } from 'mint-ui'
+import './mock/mockSever'
+Vue.component(Button.name, Button)
+Vue.component(Cell.name, Cell)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
