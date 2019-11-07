@@ -106,21 +106,21 @@
 import {mapActions, mapState} from 'vuex'
 export default {
   data () {
-      return {
-          toggleShow: '',
-          toggleShowTip: '',
-          activeColor: ['activity-green', 'activity-red', 'activity-orange']
-      }
+    return {
+      toggleShow: '',
+      toggleShowTip: '',
+      activeColor: ['activity-green', 'activity-red', 'activity-orange']
+    }
   },
   mounted () {
-   this.reqRating()
-   this.reqInfo()
+    this.reqRating()
+    this.reqInfo()
   },
   methods: {
     ...mapActions(['reqRating', 'reqInfo'])
   },
   computed: {
-    ...mapState(['info','rating','foods'])
+    ...mapState(['info', 'rating', 'foods'])
   }
 }
 </script>
@@ -416,7 +416,7 @@ export default {
       &.fadeIn-enter
         opacity 0
       &.fadeIn-leave-active, &.fadeIn-enter-active
-        transition opacity 1s 
+        transition opacity 1s
       &.fadeIn-leave-to
         opacity 0
       position fixed

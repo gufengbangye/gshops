@@ -1,4 +1,4 @@
-import {RECEIVE_ADDRESS, RECEIVE_CATEGORYS, RECEIVE_SHOPS, RECEIVE_USERINFO, RESET_USERINFO, RECEIVE_CODE, RECEIVE_FOODS, RECEIVE_RATING, RECEIVE_INFO} from './mutation-types'
+import {RECEIVE_ADDRESS, RECEIVE_CATEGORYS, RECEIVE_SHOPS, RECEIVE_USERINFO, RESET_USERINFO, RECEIVE_CODE, RECEIVE_FOODS, RECEIVE_RATING, RECEIVE_INFO, DECRMENTCOUNT, INCRMENTCOUNT} from './mutation-types'
 export default{
   [RECEIVE_ADDRESS] (state, {address}) {
     state.address = address
@@ -26,5 +26,15 @@ export default{
   },
   [RECEIVE_RATING] (state, {rating}) {
     state.rating = rating
+  },
+  [DECRMENTCOUNT]  (state, {food}) {
+    food.count--
+  },
+  [INCRMENTCOUNT] (state, {food}) {
+    if (!food.count) {
+      food.count = 1
+    } else {
+      food.count++
+    }
   }
 }

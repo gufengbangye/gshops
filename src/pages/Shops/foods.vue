@@ -2,8 +2,8 @@
   <div>
     <div class="goods">
       <div class="menu-wrapper" ref="menuWrapper">
-        <ul>
-          <li class="menu-item" v-for="(food, index) in foods" :key="index">
+        <ul >
+          <li class="menu-item" v-for="(food, index) in foods" :key="index" :class="{'current': index===currentIndex}" @click="clickMenuItem(index)">
             <span class="text bottom-border-1px">
               <img
                 class="icon" :src='food.icon' v-if="food.icon"
@@ -12,8 +12,8 @@
           </li>
         </ul>
       </div>
-      <div class="foods-wrapper" ref="foodsWrapper">
-        <ul>
+      <div class="foods-wrapper" >
+        <ul ref="foodsWrapper">
           <li class="food-list-hook" v-for="(food, index) in foods" :key="index">
             <h1 class="title">{{food.name}}</h1>
             <ul  v-if='food'>
@@ -35,7 +35,7 @@
                   <div class="price">
                     <span class="now">￥{{item.price}}</span>
                   </div>
-                  <div class="cartcontrol-wrapper">CartControl</div>
+                  <div class="cartcontrol-wrapper"><CartControl :food=item></CartControl></div>
                 </div>
               </li>
             </ul>
@@ -47,22 +47,93 @@
 </template>
 
 <script>
+import BScroll from '@better-scroll/core'
 import {mapActions, mapState} from 'vuex'
+import CartControl from '../../components/CartControl/CartControl'
+
 export default {
-  mounted () {
-    this.reqFoods()
-  }, 
-  methods: {
-    ...mapActions(['reqFoods'])
+  data () {
+    return {
+      scrollY: '',
+      tops: [],
+      wrapTops: []
+    }
   },
-  computed:{
-    ...mapState(['foods'])
+  mounted () {
+    this.reqFoods(() => {
+      this.$nextTick(
+        () => {
+          this._inintMenuWrapper()
+          this._inintFoodScroll()
+          this._inintTop()
+        }
+      )
+    })
+  },
+  methods: {
+    ...mapActions(['reqFoods']),
+    _inintFoodScroll () {
+      this.foodScroll = new BScroll('.foods-wrapper', {
+        scrollY: true,
+        click: true,
+        probeType: 3
+      })
+      this.foodScroll.on('scroll', ({x,y}) => {
+            this.scrollY = -y
+      })
+      this.foodScroll.on('scrollEnd', ({x,y}) => {
+        this.scrollY = -y
+        if (this.scrollY > 0) {
+        this.MenuScroll.scrollToElement('.current', 400)
+        }
+      })
+    },
+    _inintTop () {
+      const tops = []
+      let top = 0
+      tops.push(top)
+      const foodlist = this.$refs.foodsWrapper.getElementsByClassName('food-list-hook')
+      Array.prototype.slice.call(foodlist).forEach(element => {
+        top += element.clientHeight
+        tops.push(top)
+      })
+      this.tops = tops
+    },
+    _inintMenuWrapper () {
+      this.MenuScroll = new BScroll('.menu-wrapper', {
+        click: true,
+        probeType: 2
+      })
+    },
+    clickMenuItem (index) {
+      this.foodScroll.scrollTo(0, -this.tops[index], 400)
+    }
+  },
+  computed: {
+    ...mapState(['foods']),
+    currentIndex () {
+      const {tops, scrollY} = this
+      var index = tops.findIndex((item, index) => {
+        return scrollY >= tops[index] && scrollY < tops[index + 1]
+      })
+      return index
+    }
+  },
+  watch: {
+    scrollY: function (newValue) {
+      if (newValue > 0) {
+        this.MenuScroll.scrollToElement('.current', 400)
+      }
+    }
+  },
+  components: {
+    CartControl
   }
 }
 </script>
 
 <style lang='stylus' rel='stylesheet/stylus'>
-@import '../../common/stylus/mixins';
+@import '../../common/stylus/mixins'
   .goods
     display: flex
     position: absolute
