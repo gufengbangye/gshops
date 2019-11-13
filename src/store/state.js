@@ -8,5 +8,5 @@ export default{
   userInfo: {},
   info: {},
   rating: {},
-  foods: {}
+  foods: []
 }

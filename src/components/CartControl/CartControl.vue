@@ -1,7 +1,7 @@
 <template>
   <div class="cartcontrol">
-    <div class="iconfont icon-remove_circle_outline" v-if="food.count" @click="upDataCount(false)"></div>
-    <div class="cart-count" v-if="food.count">{{food.count}}</div>
+    <div class="iconfont icon-remove_circle_outline" v-if="item.count" @click="upDataCount(false)"></div>
+    <div class="cart-count" v-if="item.count">{{item.count}}</div>
     <div class="iconfont icon-add_circle" @click="upDataCount(true)"></div>
   </div>
 </template>
@@ -9,11 +9,11 @@
 <script>
 export default {
   props: {
-    food: Object
+    item: Object
   },
   methods: {
     upDataCount (isAdd) {
-      this.$store.dispatch('upDataCount', {isAdd,food: this.food})
+      this.$store.dispatch('upDataCount', {isAdd, item: this.item})
     }
   }
 }

@@ -72,12 +72,11 @@ export default{
       cb && cb()
     }
   },
-  upDataCount ({commit}, {isAdd, food}) {
-    alert('lll')
+  upDataCount ({commit}, {isAdd, item}) {
     if (isAdd) {
-      commit(INCRMENTCOUNT, {food})
+      commit(INCRMENTCOUNT, {item})
     } else {
-      commit(DECRMENTCOUNT, {food})
+      commit(DECRMENTCOUNT, {item})
     }
   }
 }

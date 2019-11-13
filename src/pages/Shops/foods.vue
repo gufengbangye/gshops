@@ -35,7 +35,7 @@
                   <div class="price">
                     <span class="now">￥{{item.price}}</span>
                   </div>
-                  <div class="cartcontrol-wrapper"><CartControl :food=item></CartControl></div>
+                  <div class="cartcontrol-wrapper"><CartControl :item='item'></CartControl></div>
                 </div>
               </li>
             </ul>
@@ -56,7 +56,7 @@ export default {
     return {
       scrollY: '',
       tops: [],
-      wrapTops: []
+      wrapTops: [],
     }
   },
   mounted () {
