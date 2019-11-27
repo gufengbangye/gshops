@@ -1,8 +1,10 @@
 <template>
   <div class="cartcontrol">
-    <div class="iconfont icon-remove_circle_outline" v-if="item.count" @click="upDataCount(false)"></div>
+    <transition name="move">
+      <div class="iconfont icon-remove_circle_outline" v-if="item.count" @click.stop="upDataCount(false)"></div>
+    </transition>
     <div class="cart-count" v-if="item.count">{{item.count}}</div>
-    <div class="iconfont icon-add_circle" @click="upDataCount(true)"></div>
+    <div class="iconfont icon-add_circle" @click.stop="upDataCount(true)"></div>
   </div>
 </template>
 
@@ -13,6 +15,10 @@ export default {
   },
   methods: {
     upDataCount (isAdd) {
+      if (!this.item.count) {
+      this.$set(this.item, 'count', 0) 
+      this.$store.state.cartList.push(this.item)
+      }
       this.$store.dispatch('upDataCount', {isAdd, item: this.item})
     }
   }
@@ -36,6 +42,11 @@ export default {
     line-height 24px
     font-size 24px
     color $green
+    &.move-enter,&.move-leave-to
+      opacity 0
+      transform translateX(30px) rotate(360deg)
+    &.move-enter-active,&.move-leave-active
+      transition all 0.5s
   .cart-count
     display: inline-block
     vertical-align: top
@@ -50,5 +61,5 @@ export default {
     padding: 6px
     line-height: 24px
     font-size: 24px
-    color $green 
+    color $green
 </style>

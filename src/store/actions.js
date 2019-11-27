@@ -1,4 +1,4 @@
-import {RECEIVE_ADDRESS, RECEIVE_CATEGORYS, RECEIVE_SHOPS, RECEIVE_USERINFO, RESET_USERINFO, RECEIVE_CODE, RECEIVE_FOODS, RECEIVE_INFO, RECEIVE_RATING, INCRMENTCOUNT, DECRMENTCOUNT} from './mutation-types'
+import {RECEIVE_ADDRESS, RECEIVE_CATEGORYS, RECEIVE_SHOPS, RECEIVE_USERINFO, RESET_USERINFO, RECEIVE_CODE, RECEIVE_FOODS, RECEIVE_INFO, RECEIVE_RATING, INCRMENTCOUNT, DECRMENTCOUNT, CLEARLIST} from './mutation-types'
 import {reqShops, reqAddress, reqCategory, reqUserinfo, reqLogout, reqSendCode, reqFoods, reqRating, reqInfo} from '../api/index'
 export default{
   async getAddress ({commit, state}) {
@@ -50,18 +50,20 @@ export default{
       commit(RECEIVE_CODE, {code})
     }
   },
-  async reqInfo ({commit}) {
+  async reqInfo ({commit}, cb) {
     const reslut = await reqInfo()
     if (reslut.code === 0) {
       const info = reslut.data
       commit(RECEIVE_INFO, {info})
+      cb && cb()
     }
   },
-  async reqRating ({commit}) {
+  async reqRating ({commit}, cb) {
     const reslut = await reqRating()
     if (reslut.code === 0) {
       const rating = reslut.data
       commit(RECEIVE_RATING, {rating})
+      cb && cb()
     }
   },
   async reqFoods ({commit}, cb) {
@@ -78,5 +80,8 @@ export default{
     } else {
       commit(DECRMENTCOUNT, {item})
     }
+  },
+  clearList ({commit}) {
+    commit(CLEARLIST)
   }
 }

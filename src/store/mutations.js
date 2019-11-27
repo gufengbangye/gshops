@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import {RECEIVE_ADDRESS, RECEIVE_CATEGORYS, RECEIVE_SHOPS, RECEIVE_USERINFO, RESET_USERINFO, RECEIVE_CODE, RECEIVE_FOODS, RECEIVE_RATING, RECEIVE_INFO, DECRMENTCOUNT, INCRMENTCOUNT} from './mutation-types'
+import {RECEIVE_ADDRESS, RECEIVE_CATEGORYS, RECEIVE_SHOPS, RECEIVE_USERINFO, RESET_USERINFO, RECEIVE_CODE, RECEIVE_FOODS, RECEIVE_RATING, RECEIVE_INFO, DECRMENTCOUNT, INCRMENTCOUNT, CLEARLIST} from './mutation-types'
 export default{
   [RECEIVE_ADDRESS] (state, {address}) {
     state.address = address
@@ -31,13 +31,18 @@ export default{
   [DECRMENTCOUNT]  (state, {item}) {
     if (item.count) {
       item.count--
+      if (item.count === 0) {
+        state.cartList.splice(state.cartList.indexOf(item), 1)
+      }
     }
   },
   [INCRMENTCOUNT] (state, {item}) {
-    if (!item.count) {
-      Vue.set(item, 'count', 1) // 让新增的属性也有数据绑定
-    } else {
-      item.count++
-    }
+    item.count++
+  },
+  [CLEARLIST] (state) {
+    state.cartList.forEach((food) => {
+      food.count = 0
+    })
+    state.cartList = []
   }
 }

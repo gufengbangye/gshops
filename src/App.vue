@@ -1,8 +1,10 @@
 <template>
 
 <div id="app">
-    <router-view></router-view>
-    <FooterGuide v-show="$route.meta.showFtooer===true"></FooterGuide>
+  <keep-alive exclude='Search'>
+  <router-view></router-view>
+  </keep-alive>
+  <FooterGuide v-show="$route.meta.showFtooer===true"></FooterGuide>
 </div>
 
 </template>

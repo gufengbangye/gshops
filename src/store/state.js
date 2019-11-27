@@ -7,6 +7,7 @@ export default{
   shops: [], // 商家列表
   userInfo: {},
   info: {},
-  rating: {},
-  foods: []
+  rating: [],
+  foods: [],
+  cartList: []
 }

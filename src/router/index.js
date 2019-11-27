@@ -1,14 +1,19 @@
 import Vue from 'Vue'
 import VueRouter from 'vue-router'
-import Msite from '../pages/Msite/Msite'
-import Order from '../pages/Order/Order'
-import Search from '../pages/Search/Search'
-import profile from '../pages/profile/profile'
 import Login from '../pages/Login/login'
 import info from '../pages/Shops/info'
 import shop from '../pages/Shops/shop'
 import rating from '../pages/Shops/rating'
 import foods from '../pages/Shops/foods'
+// import Msite from '../pages/Msite/Msite'
+// import Order from '../pages/Order/Order'
+// import Search from '../pages/Search/Search'
+// import profile from '../pages/profile/profile'
+const Msite = () => import('../pages/Msite/Msite')
+const Order = () => import('../pages/Order/Order')
+const Search = () => import('../pages/Search/Search')
+const profile = () => import('../pages/profile/profile')
+
 Vue.use(VueRouter)
 
 export default new VueRouter({

@@ -1155,10 +1155,9 @@
     {
       "username": "2******3",
       "rateTime": 1469271264000,
-      "deliveryTime": "",
+      "deliveryTime|15-40": 18,
       "score": 4,
       "rateType": 0,
-      "deliveryTime": "",
       "text": "服务态度不错",
       "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png",
       "recommend": [
@@ -1168,9 +1167,10 @@
     {
       "username": "3******b",
       "rateTime": 1469261964000,
+      "deliveryTime|15-40": 18,
       "score": 3,
       "rateType": 1,
-      "text": "",
+      "text": "不好吃",
       "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png",
       "recommend": []
     },
@@ -1190,7 +1190,7 @@
       "deliveryTime": 10,
       "score": 4,
       "rateType": 0,
-      "text": "",
+      "text": "粥还不错",
       "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png",
       "recommend": []
     },
@@ -1227,17 +1227,17 @@
     {
       "username": "3******8",
       "rateTime": 1469211964000,
-      "deliveryTime": "",
+      "deliveryTime|15-40": 18,
       "score": 3,
       "rateType": 1,
-      "text": "",
+      "text": "一般般",
       "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png",
       "recommend": []
     },
     {
       "username": "a******a",
       "rateTime": 1469201964000,
-      "deliveryTime": "",
+      "deliveryTime|15-40": 18,
       "score": 4,
       "rateType": 0,
       "text": "孩子喜欢吃这家",
@@ -1249,7 +1249,7 @@
     {
       "username": "3******3",
       "rateTime": 1469191264000,
-      "deliveryTime": "",
+      "deliveryTime|15-40": 18,
       "score": 4,
       "rateType": 0,
       "text": "粥挺好吃的",
@@ -1259,10 +1259,10 @@
     {
       "username": "t******b",
       "rateTime": 1469181964000,
-      "deliveryTime": "",
+      "deliveryTime|15-40": 18,
       "score": 3,
       "rateType": 1,
-      "text": "",
+      "text": "没见过这么难吃的",
       "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png",
       "recommend": []
     },
@@ -1279,17 +1279,17 @@
     {
       "username": "k******3",
       "rateTime": 1469161264000,
-      "deliveryTime": "",
+      "deliveryTime|15-40": 18,
       "score": 4,
       "rateType": 0,
-      "text": "",
+      "text": "还可以",
       "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png",
       "recommend": []
     },
     {
       "username": "u******b",
       "rateTime": 1469151964000,
-      "deliveryTime": "",
+      "deliveryTime|15-40": 18,
       "score": 4,
       "rateType": 0,
       "text": "下雨天给快递小哥点个赞",
@@ -1299,7 +1299,7 @@
     {
       "username": "s******c",
       "rateTime": 1469141964000,
-      "deliveryTime": "",
+      "deliveryTime|15-40": 18,
       "score": 4,
       "rateType": 0,
       "text": "好",
@@ -1309,7 +1309,7 @@
     {
       "username": "z******3",
       "rateTime": 1469131264000,
-      "deliveryTime": "",
+      "deliveryTime|15-40": 18,
       "score": 5,
       "rateType": 0,
       "text": "吃了还想再吃",
@@ -1319,7 +1319,7 @@
     {
       "username": "n******b",
       "rateTime": 1469121964000,
-      "deliveryTime": "",
+      "deliveryTime|15-40": 18,
       "score": 3,
       "rateType": 1,
       "text": "发票开的不对",
@@ -1349,17 +1349,17 @@
     {
       "username": "3******o",
       "rateTime": 1469091964000,
-      "deliveryTime": "",
+      "deliveryTime|15-40": 18,
       "score": 2,
       "rateType": 1,
-      "text": "",
+      "text": "很难吃",
       "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png",
       "recommend": []
     },
     {
       "username": "3******p",
       "rateTime": 1469081964000,
-      "deliveryTime": "",
+      "deliveryTime|15-40": 18,
       "score": 4,
       "rateType": 0,
       "text": "很喜欢的粥",
@@ -1369,7 +1369,7 @@
     {
       "username": "o******k",
       "rateTime": 1469071264000,
-      "deliveryTime": "",
+      "deliveryTime|15-40": 18,
       "score": 5,
       "rateType": 0,
       "text": "",
@@ -1379,7 +1379,7 @@
     {
       "username": "k******b",
       "rateTime": 1469061964000,
-      "deliveryTime": "",
+      "deliveryTime|15-40": 18,
       "score": 4,
       "rateType": 0,
       "text": "",

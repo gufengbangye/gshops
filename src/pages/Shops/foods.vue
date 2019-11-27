@@ -17,7 +17,7 @@
           <li class="food-list-hook" v-for="(food, index) in foods" :key="index">
             <h1 class="title">{{food.name}}</h1>
             <ul  v-if='food'>
-              <li class="food-item bottom-border-1px" v-for="(item, index) in food.foods" :key="index">
+              <li class="food-item bottom-border-1px" v-for="(item, index) in food.foods" :key="index" @click="showInfo(item)" >
                 <div class="icon">
                   <img
                     width="57"
@@ -42,7 +42,9 @@
           </li>
         </ul>
       </div>
+      <shopCart ></shopCart>
     </div>
+    <Food :item ='item' ref='food'></Food>
   </div>
 </template>
 
@@ -50,13 +52,15 @@
 import BScroll from '@better-scroll/core'
 import {mapActions, mapState} from 'vuex'
 import CartControl from '../../components/CartControl/CartControl'
-
+import Food from '../../components/Food/Food'
+import shopCart from '../../components/shopCart/shopCart'
 export default {
   data () {
     return {
       scrollY: '',
       tops: [],
       wrapTops: [],
+      item: {}
     }
   },
   mounted () {
@@ -78,10 +82,10 @@ export default {
         click: true,
         probeType: 3
       })
-      this.foodScroll.on('scroll', ({x,y}) => {
-            this.scrollY = -y
+      this.foodScroll.on('scroll', ({x, y}) => {
+        this.scrollY = -y
       })
-      this.foodScroll.on('scrollEnd', ({x,y}) => {
+      this.foodScroll.on('scrollEnd', ({x, y}) => {
         this.scrollY = -y
         if (this.scrollY > 0) {
         this.MenuScroll.scrollToElement('.current', 400)
@@ -107,6 +111,11 @@ export default {
     },
     clickMenuItem (index) {
       this.foodScroll.scrollTo(0, -this.tops[index], 400)
+    },
+    showInfo (item) {
+      this.item = item
+      console.log(this.$children)
+      this.$refs.food.toggleShow()
     }
   },
   computed: {
@@ -127,7 +136,9 @@ export default {
     }
   },
   components: {
-    CartControl
+    CartControl,
+    Food,
+    shopCart
   }
 }
 </script>
